@@ -12,4 +12,5 @@ public class Funcionario {
 	private Long id;
 	private Pessoa pessoa;
 	private Boolean status;
+	private Usuario usuario;
 }

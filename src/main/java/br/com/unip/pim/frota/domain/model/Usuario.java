@@ -1,5 +1,8 @@
 package br.com.unip.pim.frota.domain.model;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,4 +15,10 @@ public class Usuario {
 	private Long id;
 	private String username;
 	private String password;
+	private List<Grupo> grupos;
+	private LocalDateTime ultimoAcessoEm;
+	private LocalDateTime criadoEm;
+	private LocalDateTime atualizadoEm;
+	private Boolean isAtivo;
+
 }

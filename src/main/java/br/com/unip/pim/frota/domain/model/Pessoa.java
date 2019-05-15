@@ -1,5 +1,8 @@
 package br.com.unip.pim.frota.domain.model;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,12 +14,11 @@ public class Pessoa {
 
 	@Id
 	private Long id;
-	
 	private String nome;
-	
 	private String cpfCnpj;
-	
-	private Endereco endereco;
-	
+	private String tipoPessoa;
+	private List<Endereco> enderecos;
 	private Contato contato;
+	private LocalDateTime criadoEm;
+	private LocalDateTime atualizadoEm;
 }
