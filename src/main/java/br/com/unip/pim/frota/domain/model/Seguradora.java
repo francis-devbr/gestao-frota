@@ -7,9 +7,10 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Funcionario {
+public class Seguradora {
+
 	@Id
 	private Long id;
+	
 	private Pessoa pessoa;
-	private Boolean status;
 }

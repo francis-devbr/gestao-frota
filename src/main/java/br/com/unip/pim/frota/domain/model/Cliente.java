@@ -11,8 +11,6 @@ public class Cliente {
 	
 	@Id
 	private Long id;
-	
 	private Pessoa pessoa;
-	
 	private Boolean status;
 }

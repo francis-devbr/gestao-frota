@@ -7,9 +7,11 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Funcionario {
+public class Telefone {
+
 	@Id
 	private Long id;
-	private Pessoa pessoa;
-	private Boolean status;
+	private String ddd;
+	private String numero;
+	private String tipo;
 }
