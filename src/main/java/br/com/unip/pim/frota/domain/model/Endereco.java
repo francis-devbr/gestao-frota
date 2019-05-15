@@ -1,5 +1,7 @@
 package br.com.unip.pim.frota.domain.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -17,5 +19,8 @@ public class Endereco {
 	private String bairro;
 	private String cidade;
 	private String uf;
+	private LocalDateTime criadoEm;
+	private LocalDateTime atualizadoEm;
+	private Boolean isAtivo;
 
 }

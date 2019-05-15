@@ -1,6 +1,7 @@
 package br.com.unip.pim.frota.domain.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,5 +22,8 @@ public class Seguro {
 	private Veiculo veiculo;
 	
 	private Seguradora seguradora;
+	
+	private LocalDateTime criadoEm;
+	private LocalDateTime atualizadoEm;
 	
 }

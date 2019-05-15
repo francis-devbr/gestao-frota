@@ -1,5 +1,6 @@
 package br.com.unip.pim.frota.domain.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,4 +16,6 @@ public class Contato {
 	private Long id;
 	private List<Email> emails;
 	private List<Telefone> telefones;
+	private LocalDateTime criadoEm;
+	private LocalDateTime atualizadoEm;
 }
