@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.Privilegio;
 
-public interface PrivilegioRepository extends JpaRepository<Privilegio, Long>{
+public interface PrivilegioRepository extends JpaRepository<Privilegio, Long> {
 
 	Privilegio findByNome(String nome);
-	
+
 }

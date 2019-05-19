@@ -1,26 +1,28 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
-import lombok.Data;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
-public class Infracao {
-	@Id
-	private Long id;
-	
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+public class Infracao extends BaseEntityAudit {
+
+	private static final long serialVersionUID = 1L;
+
 	private Veiculo veiculo;
-	
+
 	private Motorista motorista;
-	
+
 	private LocalDate infracaoCometidaEm;
-	
-	private LocalDateTime criadoEm;
-	
-	private LocalDateTime atualizadoEm;
+
 }

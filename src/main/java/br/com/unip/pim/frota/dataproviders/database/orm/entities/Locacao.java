@@ -3,21 +3,30 @@ package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import lombok.Data;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
-public class Locacao {
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
+public class Locacao extends BaseEntityAudit {
 
-	@Id
-	private Long id;
+	private static final long serialVersionUID = 1L;
 	
+	@ManyToOne
+	private Cliente cliente;
+
+	@ManyToOne
 	private Veiculo veiculo;
 	
-	private Cliente cliente;
-	
+	@ManyToOne
 	private Motorista motorista;
 	
 	private LocalDate locadoEm;

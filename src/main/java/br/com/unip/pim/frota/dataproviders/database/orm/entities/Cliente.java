@@ -17,6 +17,7 @@ public class Cliente extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
+	@NonNull
 	@Getter
 	private Pessoa pessoa;
 

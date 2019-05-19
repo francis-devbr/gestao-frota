@@ -25,9 +25,11 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.hibernate.validator.group.GroupSequenceProvider;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.TipoPessoa;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.PessoaGroupSequenceProvider;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CnpjGroup;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CpfGroup;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.localizacao.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

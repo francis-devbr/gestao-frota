@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.base;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CnpjGroup;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CpfGroup;

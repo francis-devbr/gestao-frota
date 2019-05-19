@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.localizacao;
 
 import javax.persistence.Entity;
 
@@ -12,14 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
-public class Motorista extends BaseEntityAudit {
+@EqualsAndHashCode(callSuper = false)
+public class Pais extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	private Pessoa pessoa;
+	private String sigla;
 
-	private String cnh;
+	private String nome;
 
-	private Boolean isEnable;
 }
