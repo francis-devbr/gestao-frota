@@ -1,6 +1,5 @@
-package br.com.unip.pim.frota.domain.model;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -10,17 +9,16 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Infracao {
+public class Seguradora {
+
 	@Id
 	private Long id;
 	
-	private Veiculo veiculo;
-	
-	private Motorista motorista;
-	
-	private LocalDate infracaoCometidaEm;
+	private Pessoa pessoa;
 	
 	private LocalDateTime criadoEm;
 	
 	private LocalDateTime atualizadoEm;
+	
+	private Boolean isAtivo;
 }

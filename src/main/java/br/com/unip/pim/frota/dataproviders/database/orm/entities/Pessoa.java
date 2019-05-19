@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.domain.model;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,12 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Contato {
-	
+public class Pessoa {
+
 	@Id
 	private Long id;
-	private List<Email> emails;
-	private List<Telefone> telefones;
+	private String nome;
+	private String cpfCnpj;
+	private String tipoPessoa;
+	private List<Endereco> enderecos;
+	private Contato contato;
 	private LocalDateTime criadoEm;
 	private LocalDateTime atualizadoEm;
 }

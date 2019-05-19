@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.domain.model;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
