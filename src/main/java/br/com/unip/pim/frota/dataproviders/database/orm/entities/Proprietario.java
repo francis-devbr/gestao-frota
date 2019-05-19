@@ -1,15 +1,12 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import javax.persistence.OneToOne;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import lombok.EqualsAndHashCode;
@@ -23,18 +20,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Contato extends BaseEntityAudit {
+public class Proprietario extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
 	@NonNull
-	private String tipo;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
+	private Pessoa pessoa;
 
-	@Fetch(FetchMode.SELECT)
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "contato_id", referencedColumnName = "id")
-	private List<Telefone> telefones;
+	@OneToMany
+	@JoinColumn(name = "proprietario_id", referencedColumnName = "id")
+	private Collection<Veiculo> veiculos;
 
-	@Column(unique = true)
-	private String email;
+	@NonNull
+	private Boolean isEnable;
+
 }

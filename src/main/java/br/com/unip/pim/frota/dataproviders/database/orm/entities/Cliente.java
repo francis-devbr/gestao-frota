@@ -7,21 +7,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@RequiredArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Cliente extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
 	@NonNull
-	@Getter
 	private Pessoa pessoa;
 
 	@NonNull
-	@Getter
 	private Boolean isEnable;
 }

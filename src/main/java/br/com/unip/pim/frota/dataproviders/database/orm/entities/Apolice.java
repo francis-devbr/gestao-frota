@@ -1,5 +1,7 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -7,7 +9,6 @@ import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntity
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
@@ -15,33 +16,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Veiculo extends BaseEntityAudit {
+public class Apolice extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@NonNull
-	private String placa;
+	private LocalDate inicioVigenciaEm;
 
-	@NonNull
-	private String chassi;
+	private LocalDate fimVigenciaEm;
 
-	@NonNull
-	private String tipoCombustivel;
-
-	@NonNull
-	private Integer anoFabricacao;
-
-	@NonNull
-	private Integer anoModelo;
-	
-	@NonNull
-	private String cor;
-	
-	@NonNull
-	private String categoria;
-
-	@NonNull
 	@ManyToOne
-	private Modelo modelo;
+	private Veiculo veiculo;
+
+	@ManyToOne
+	private Seguradora seguradora;
 
 }
