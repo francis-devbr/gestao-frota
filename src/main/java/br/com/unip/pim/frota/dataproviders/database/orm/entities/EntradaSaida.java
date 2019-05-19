@@ -1,5 +1,7 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
@@ -7,29 +9,24 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Veiculo extends BaseEntityAudit {
+public class EntradaSaida extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@NonNull
 	@Getter
-	private String placa;
-
-	@NonNull
+	private Pessoa pessoa;
+	
 	@Getter
-	private String chassi;
-
-	@NonNull
+	private Veiculo veiculo;
+	
 	@Getter
-	private Modelo modelo;
-
-	@NonNull
+	private LocalDateTime entradaEm;
+	
 	@Getter
-	private Marca marca;
+	private LocalDateTime saidaEm;
 }

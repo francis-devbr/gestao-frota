@@ -1,17 +1,38 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
-import lombok.Data;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
-public class Telefone {
+@RequiredArgsConstructor
+@NoArgsConstructor
+public class Telefone extends BaseEntityAudit {
 
-	@Id
-	private Long id;
-	private String ddd;
-	private String numero;
+	private static final long serialVersionUID = 1L;
+
+	@NonNull
+	@Getter
+	@Setter
 	private String tipo;
+
+	@NonNull
+	@Getter
+	@Setter
+	private String ddd;
+
+	@NonNull
+	@Getter
+	@Setter
+	private String numero;
+
+	@NonNull
+	@Getter
+	@Setter
+	private Boolean isEnable;
 }

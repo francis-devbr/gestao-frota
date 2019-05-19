@@ -1,40 +1,57 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import lombok.Builder;
-import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-@Builder
-@Data
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 @Entity
-public class Usuario {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String nome;
-	private String senha;
-	private LocalDateTime ultimoAcessoEm;
-	private LocalDateTime criadoEm;
-	private LocalDateTime atualizadoEm;
-	private Boolean isAtivo;
+@RequiredArgsConstructor
+@NoArgsConstructor
+public class Usuario extends BaseEntityAudit {
 
-	@ManyToMany
+	private static final long serialVersionUID = 1L;
+	
+	@Getter
+	@NonNull
+	@Setter
+	@Column(unique=true)
+	private String username;
+    
+	@NonNull
+	@Getter
+	@Setter
+    private String password;
+    
+	@Getter
+	@Setter
+    @Fetch(FetchMode.SELECT)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable( 
-        name = "usuarios_regras", 
+        name = "usuarios_roles", 
         joinColumns = @JoinColumn(
           name = "usuario_id", referencedColumnName = "id"), 
         inverseJoinColumns = @JoinColumn(
           name = "regra_id", referencedColumnName = "id")) 
     private Collection<Regra> regras;
+
+	@NonNull
+	@Getter
+	@Setter
+	private Boolean isEnable;
+
 }

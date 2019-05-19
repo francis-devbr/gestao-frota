@@ -1,19 +1,28 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
-import lombok.Data;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
-public class Fornecedor {
+@RequiredArgsConstructor
+@NoArgsConstructor
+public class Fornecedor extends BaseEntityAudit {
 
-	@Id
-	private Long id;
+	private static final long serialVersionUID = 1L;
 	
+	@Getter
+	@Setter
 	private Pessoa pessoa;
 	
-	private Boolean status;
+	@NonNull
+	@Getter
+	@Setter
+	private Boolean isEnable;
 	
 }

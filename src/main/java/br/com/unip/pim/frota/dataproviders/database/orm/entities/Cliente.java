@@ -1,17 +1,26 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
-import lombok.Data;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-@Data
 @Entity
-public class Cliente {
-	
-	@Id
-	private Long id;
+@RequiredArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
+public class Cliente extends BaseEntityAudit {
+
+	private static final long serialVersionUID = 1L;
+
+	@Getter
 	private Pessoa pessoa;
-	private Usuario usuario;
-	private Boolean status;
+
+	@NonNull
+	@Getter
+	private Boolean isEnable;
 }
