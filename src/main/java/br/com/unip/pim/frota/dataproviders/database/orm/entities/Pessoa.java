@@ -28,15 +28,17 @@ import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntity
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.PessoaGroupSequenceProvider;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CnpjGroup;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CpfGroup;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@RequiredArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @GroupSequenceProvider(PessoaGroupSequenceProvider.class)
 public class Pessoa extends BaseEntityAudit {
 

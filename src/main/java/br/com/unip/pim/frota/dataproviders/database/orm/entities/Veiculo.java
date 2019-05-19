@@ -1,5 +1,7 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
