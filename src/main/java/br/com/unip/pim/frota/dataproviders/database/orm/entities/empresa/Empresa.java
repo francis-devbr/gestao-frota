@@ -1,8 +1,11 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.empresa;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.Pessoa;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,11 +16,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Seguradora extends BaseEntityAudit {
+public class Empresa extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
+	@OneToOne
 	private Pessoa pessoa;
 
-	private Boolean isAtivo;
+	@NotNull
+	private Boolean isEnable;
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.hibernate.validator.spi.group.DefaultGroupSequenceProvider;
 
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.Pessoa;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.Pessoa;
 
 public class PessoaGroupSequenceProvider implements DefaultGroupSequenceProvider<Pessoa> {
 

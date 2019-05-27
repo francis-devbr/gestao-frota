@@ -1,9 +1,11 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.empresa;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.Pessoa;
@@ -18,17 +20,31 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Motorista extends BaseEntityAudit {
+public class Funcionario extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
+	@NotNull
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
 	private Pessoa pessoa;
 
-	private String cnh;
+	@ManyToOne
+	private Empresa empresa;
 
+	@ManyToOne
+	private Cargo cargo;
+
+	@NotNull
+	private String sexo;
+
+	@Getter
+	@Setter
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_id")
 	private Usuario user;
 
+	@NotNull
 	private Boolean isEnable;
+
 }

@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.base;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

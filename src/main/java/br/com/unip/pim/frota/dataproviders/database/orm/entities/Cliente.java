@@ -3,6 +3,7 @@ package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 import javax.persistence.Entity;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.Pessoa;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

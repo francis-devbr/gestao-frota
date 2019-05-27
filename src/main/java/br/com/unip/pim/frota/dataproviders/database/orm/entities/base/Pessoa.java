@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -24,8 +23,6 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 import org.hibernate.validator.group.GroupSequenceProvider;
 
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.TipoPessoa;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.PessoaGroupSequenceProvider;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CnpjGroup;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CpfGroup;
@@ -77,13 +74,6 @@ public class Pessoa extends BaseEntityAudit {
 	@JoinTable(name = "pessoas_enderecos", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "endereco_id", referencedColumnName = "id"))
 	private List<Endereco> enderecos = new ArrayList<>();
 
-	@NonNull
-	@Getter
-	@Setter
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "pessoas_papeis", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id"))
-	private List<Papel> papeis = new ArrayList<>();
-
 	@Getter
 	@Setter
 	@OneToMany
@@ -92,9 +82,7 @@ public class Pessoa extends BaseEntityAudit {
 
 	@Getter
 	@Setter
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "usuario_id")
-	private Usuario user;
+	private String foto;
 
 	@PrePersist
 	@PreUpdate

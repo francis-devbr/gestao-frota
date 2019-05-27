@@ -4,44 +4,33 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.Privilegio;
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.Regra;
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.Usuario;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Privilegio;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Regra;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Usuario;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.PrivilegioRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.RegraRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.UsuarioRepository;
+import lombok.AllArgsConstructor;
 
 @Component
+@AllArgsConstructor
 public class InitialDataLoader implements
 		ApplicationListener<ContextRefreshedEvent> {
 
-	boolean alreadySetup = false;
+	private final UsuarioRepository usuarioRepository;
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private final RegraRepository regraRepository;
 
-	@Autowired
-	private RegraRepository regraRepository;
-
-	@Autowired
-	private PrivilegioRepository privilegioRepository;
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private final PrivilegioRepository privilegioRepository;
 
 	@Override
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-
-		if (alreadySetup)
-			return;
 
 		Privilegio readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
 		Privilegio writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
@@ -53,15 +42,14 @@ public class InitialDataLoader implements
 
 		Regra adminRole = regraRepository.findByNome("ROLE_ADMIN");
 		Usuario user = Usuario.builder()
-				.nome("Teste")
-				.senha(passwordEncoder.encode("1234"))
+				.username("Teste")
+				.password("1234")
 				.regras(Arrays.asList(adminRole))
-				.isAtivo(true)
+				.isEnable(true)
 				.build();
 
 		usuarioRepository.save(user);
 
-		alreadySetup = true;
 	}
 
 	private Privilegio createPrivilegeIfNotFound(String name) {

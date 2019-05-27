@@ -1,4 +1,4 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo;
 
 import javax.persistence.Entity;
 
@@ -14,11 +14,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Privilegio extends BaseEntityAudit {
+public class Modelo extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
 	@NonNull
-	private String name;
+	private String nome;
 
+	private Boolean isEnable;
 }

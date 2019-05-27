@@ -1,13 +1,16 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.empresa.Funcionario;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
@@ -15,33 +18,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Veiculo extends BaseEntityAudit {
+public class Reserva extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@NonNull
-	private String placa;
+	@OneToOne
+	private Motorista motorista;
 
-	@NonNull
-	private String chassi;
+	@NotNull
+	private LocalDateTime retiraEm;
 
-	@NonNull
-	private String tipoCombustivel;
+	private LocalDateTime entregaEm;
 
-	@NonNull
-	private Integer anoFabricacao;
-
-	@NonNull
-	private Integer anoModelo;
-	
-	@NonNull
-	private String cor;
-	
-	@NonNull
-	private String categoria;
-
-	@NonNull
-	@ManyToOne
-	private Modelo modelo;
+	@OneToOne
+	private Funcionario funcionario;
 
 }

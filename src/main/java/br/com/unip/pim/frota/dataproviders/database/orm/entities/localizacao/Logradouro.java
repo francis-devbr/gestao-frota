@@ -1,9 +1,8 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities;
-
-import java.time.LocalDate;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.localizacao;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import lombok.EqualsAndHashCode;
@@ -15,22 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
-public class Locacao extends BaseEntityAudit {
+@EqualsAndHashCode(callSuper = false)
+public class Logradouro extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
-	
-	@ManyToOne
-	private Cliente cliente;
 
+	@NotNull
+	private String cep;
+
+	@NotNull
+	private String nome;
+
+	@NotNull
 	@ManyToOne
-	private Veiculo veiculo;
-	
-	@ManyToOne
-	private Motorista motorista;
-	
-	private LocalDate locadoEm;
-	
-	private LocalDate devolveEm;
-	
+	private Bairro bairro;
 }

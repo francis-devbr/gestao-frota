@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.Veiculo;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,6 +30,10 @@ public class EntradaSaida extends BaseEntityAudit {
 	@ManyToOne
 	private Veiculo veiculo;
 
+	@ManyToOne
+	private Convenio convenio;
+	
+	@NotNull
 	private LocalDateTime entradaEm;
 
 	private LocalDateTime saidaEm;
