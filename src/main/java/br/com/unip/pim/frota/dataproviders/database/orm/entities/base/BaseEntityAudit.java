@@ -30,7 +30,6 @@ public abstract class BaseEntityAudit extends BaseEntity {
 	private String createdBy;
 
 	@JsonFormat(pattern = "dd:MM:yyyy HH:mm:ss")
-
 	@JsonIgnore
 	@CreatedDate
 	private LocalDateTime createdDate;

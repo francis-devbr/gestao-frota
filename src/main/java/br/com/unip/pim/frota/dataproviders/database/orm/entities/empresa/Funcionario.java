@@ -24,7 +24,6 @@ public class Funcionario extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
 	private Pessoa pessoa;
@@ -38,8 +37,6 @@ public class Funcionario extends BaseEntityAudit {
 	@NotNull
 	private String sexo;
 
-	@Getter
-	@Setter
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_id")
 	private Usuario user;

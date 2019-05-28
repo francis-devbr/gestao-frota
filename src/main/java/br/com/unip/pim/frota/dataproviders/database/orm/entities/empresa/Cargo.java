@@ -1,12 +1,12 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities.empresa;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
@@ -18,9 +18,10 @@ public class Cargo extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
+	@NotNull
 	private String nome;
 
-	@NonNull
+	@NotNull
 	private Boolean isEnable;
 
 }

@@ -31,10 +31,11 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
@@ -43,45 +44,32 @@ public class Pessoa extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@NonNull
-	@Getter
-	@Setter
+	@NotNull
 	@NotBlank(message = "Nome é obrigatório")
 	@Size(min = 3, max = 50)
 	@Column(length = 50)
 	private String nome;
 
-	@NonNull
-	@Getter
-	@Setter
 	@NotNull(message = "Tipo pessoa é obrigatório")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_pessoa")
 	private TipoPessoa tipoPessoa;
 
-	@NonNull
-	@Getter
-	@Setter
+	@NotNull
 	@NotBlank(message = "CPF/CNPJ é obrigatório")
 	@CPF(groups = CpfGroup.class)
 	@CNPJ(groups = CnpjGroup.class)
 	@Column(name = "cpf_cnpj", unique = true)
 	private String cpfOuCnpj;
 
-	@Getter
-	@Setter
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "pessoas_enderecos", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "endereco_id", referencedColumnName = "id"))
 	private List<Endereco> enderecos = new ArrayList<>();
 
-	@Getter
-	@Setter
 	@OneToMany
 	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
 	private List<Contato> contatos = new ArrayList<>();
 
-	@Getter
-	@Setter
 	private String foto;
 
 	@PrePersist

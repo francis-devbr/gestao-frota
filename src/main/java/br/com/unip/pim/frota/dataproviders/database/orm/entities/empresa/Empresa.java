@@ -1,6 +1,8 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities.empresa;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +22,8 @@ public class Empresa extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
 	private Pessoa pessoa;
 
 	@NotNull

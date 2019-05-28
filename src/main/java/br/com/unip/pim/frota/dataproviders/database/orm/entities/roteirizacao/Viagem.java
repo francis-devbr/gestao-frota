@@ -37,6 +37,6 @@ public class Viagem extends BaseEntityAudit {
 	@NotNull
 	private String destino;
 	
-	private LocalDate viegemRealizadaEm;
+	private LocalDate viagemRealizadaEm;
 	
 }

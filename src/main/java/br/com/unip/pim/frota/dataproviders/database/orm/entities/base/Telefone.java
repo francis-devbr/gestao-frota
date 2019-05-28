@@ -1,39 +1,33 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities.base;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@RequiredArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Telefone extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
 
-	@NonNull
-	@Getter
-	@Setter
+	@NotNull
 	private String tipo;
 
-	@NonNull
-	@Getter
-	@Setter
+	@NotNull
 	private String ddd;
 
-	@NonNull
-	@Getter
-	@Setter
+	@NotNull
 	private String numero;
 
-	@NonNull
-	@Getter
-	@Setter
+	@NotNull
 	private Boolean isEnable;
 }
