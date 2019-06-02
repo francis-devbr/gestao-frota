@@ -5,12 +5,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = false)
 public class Contato extends BaseEntityAudit {
 
@@ -29,9 +29,7 @@ public class Contato extends BaseEntityAudit {
 	@NonNull
 	private String tipo;
 
-	@Fetch(FetchMode.SELECT)
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "contato_id", referencedColumnName = "id")
 	private List<Telefone> telefones;
 
 	@Column(unique = true)

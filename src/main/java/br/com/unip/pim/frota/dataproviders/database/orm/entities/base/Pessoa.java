@@ -1,6 +1,5 @@
 package br.com.unip.pim.frota.dataproviders.database.orm.entities.base;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,6 +27,7 @@ import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.validation.group.CpfGroup;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.localizacao.Endereco;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +39,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Builder
 @GroupSequenceProvider(PessoaGroupSequenceProvider.class)
 public class Pessoa extends BaseEntityAudit {
 
@@ -64,11 +65,11 @@ public class Pessoa extends BaseEntityAudit {
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "pessoas_enderecos", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "endereco_id", referencedColumnName = "id"))
-	private List<Endereco> enderecos = new ArrayList<>();
+	private List<Endereco> enderecos;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
-	private List<Contato> contatos = new ArrayList<>();
+	private List<Contato> contatos;
 
 	private String foto;
 

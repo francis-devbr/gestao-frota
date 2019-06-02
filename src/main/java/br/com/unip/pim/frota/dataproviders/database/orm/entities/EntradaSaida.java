@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.motorista.Motorista;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.Veiculo;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

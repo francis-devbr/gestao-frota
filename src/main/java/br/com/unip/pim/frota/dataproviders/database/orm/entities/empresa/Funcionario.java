@@ -9,7 +9,8 @@ import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.Pessoa;
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Usuario;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = false)
 public class Funcionario extends BaseEntityAudit {
 
@@ -36,10 +39,6 @@ public class Funcionario extends BaseEntityAudit {
 
 	@NotNull
 	private String sexo;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "usuario_id")
-	private Usuario user;
 
 	@NotNull
 	private Boolean isEnable;

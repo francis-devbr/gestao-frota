@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = false)
 public class Bairro extends BaseEntityAudit {
 
@@ -25,6 +27,6 @@ public class Bairro extends BaseEntityAudit {
 	private String nome;
 
 	@ManyToOne
-	private Cidade estado;
+	private Cidade cidade;
 
 }

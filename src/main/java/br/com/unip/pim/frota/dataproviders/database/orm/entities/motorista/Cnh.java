@@ -1,10 +1,8 @@
-package br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo;
+package br.com.unip.pim.frota.dataproviders.database.orm.entities.motorista;
 
-import java.util.Collection;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import lombok.AllArgsConstructor;
@@ -21,16 +19,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = false)
-public class Marca extends BaseEntityAudit {
+public class Cnh extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 1L;
-
-	@NotNull
-	private String nome;
-
-	@OneToMany
-	private Collection<Modelo> modelos;
-
-	@NotNull
-	private Boolean isEnable;
+	
+	private String numero;
+	
+	private LocalDate renovaEm;
+	
+	private String categoria;
 }
