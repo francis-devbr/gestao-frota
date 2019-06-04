@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.BaseEntityAudit;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.base.Pessoa;
-import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

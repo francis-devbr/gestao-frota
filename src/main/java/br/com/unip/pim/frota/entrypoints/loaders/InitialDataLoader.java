@@ -1,5 +1,6 @@
 package br.com.unip.pim.frota.entrypoints.loaders;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,14 +30,24 @@ import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Regra;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.login.Usuario;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.motorista.Cnh;
 import br.com.unip.pim.frota.dataproviders.database.orm.entities.motorista.Motorista;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.Categoria;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.Marca;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.Modelo;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.TipoCombustivel;
+import br.com.unip.pim.frota.dataproviders.database.orm.entities.veiculo.Veiculo;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.CargoRepository;
+import br.com.unip.pim.frota.dataproviders.database.orm.repositories.CategoriaRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.EmpresaRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.FuncionarioRepository;
+import br.com.unip.pim.frota.dataproviders.database.orm.repositories.MarcaRepository;
+import br.com.unip.pim.frota.dataproviders.database.orm.repositories.ModeloRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.MotoristaRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.PessoaRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.PrivilegioRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.RegraRepository;
+import br.com.unip.pim.frota.dataproviders.database.orm.repositories.TipoCombustivelRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.UsuarioRepository;
+import br.com.unip.pim.frota.dataproviders.database.orm.repositories.VeiculoRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.localizacao.BairroRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.localizacao.CidadeRepository;
 import br.com.unip.pim.frota.dataproviders.database.orm.repositories.localizacao.EstadoRepository;
@@ -77,6 +88,16 @@ public class InitialDataLoader implements
 	private final EmpresaRepository empresaRepository;
 
 	private final MotoristaRepository motoristaRepository;
+
+	private final ModeloRepository modeloRepository;
+
+	private final MarcaRepository marcaRepository;
+
+	private final TipoCombustivelRepository tipoCombustivelRepository;
+
+	private final CategoriaRepository categoriaRepository;
+
+	private final VeiculoRepository veiculoRepository;
 
 	private void initPrivilegesAndRoles() {
 
@@ -122,6 +143,55 @@ public class InitialDataLoader implements
 		createFuncionarioTecnico();
 
 		createMotorista();
+
+		createVeiculo();
+	}
+
+	private void createVeiculo() {
+
+		Modelo modelo = Modelo.builder()
+				.nome("Uno fire")
+				.isEnable(true)
+				.build();
+		modelo = modeloRepository.save(modelo);
+
+		Marca marca = Marca.builder()
+				.nome("Fiat")
+				.modelos(Arrays.asList(modelo))
+				.isEnable(true)
+				.build();
+		marca = marcaRepository.save(marca);
+
+		TipoCombustivel tipoCombustivel = TipoCombustivel.builder()
+				.nome("Gasolina")
+				.isEnable(true)
+				.build();
+		tipoCombustivel = tipoCombustivelRepository.save(tipoCombustivel);
+
+		Categoria categoria = Categoria.builder()
+				.nome("Passeio")
+				.isEnable(true)
+				.build();
+		categoria = categoriaRepository.save(categoria);
+
+		Veiculo veiculo = Veiculo.builder()
+				.placa("XPT4122")
+				.chassi("fsgafsgasfg")
+				.renavam("sasasasasasas")
+				.marca(marca)
+				.anoFabricacao(2018)
+				.anoModelo(2018)
+				.cor("branco")
+				.tipoCombustivel(tipoCombustivel)
+				.categoria(categoria)
+				.valorPago(BigDecimal.valueOf(30.000))
+				.kmInicial(BigDecimal.ZERO)
+				.kmAtual(BigDecimal.TEN)
+				.mesIpva(1)
+				.isEnable(true)
+				.build();
+
+		veiculoRepository.save(veiculo);
 	}
 
 	private void createTipoLogradouro() {
@@ -1223,7 +1293,6 @@ public class InitialDataLoader implements
 				.contatos(Arrays.asList(contato))
 				.build();
 
-
 		Cargo cargo = createCargoIfNotFound("Supervisor");
 
 		Empresa empresa = empresaRepository
@@ -1287,7 +1356,6 @@ public class InitialDataLoader implements
 				.enderecos(Arrays.asList(endereco))
 				.contatos(Arrays.asList(contato))
 				.build();
-
 
 		Cargo cargo = createCargoIfNotFound("Tecnico");
 
@@ -1361,7 +1429,7 @@ public class InitialDataLoader implements
 				.build();
 
 		funcionarioRepository.save(funcionario);
-		
+
 		createUsuarioIfNotFound("atendente001", "1234", regra, pessoa);
 
 	}
